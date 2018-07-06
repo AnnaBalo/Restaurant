@@ -97,6 +97,11 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
   }
+
+  let altText=document.createAttribute('alt');
+  altText.value = 'Restaurant Image'; 
+  image.setAttributeNode(altText);
+
   // fill reviews
   fillReviewsHTML();
 }
@@ -148,9 +153,14 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
+
+  const reviewHeader = document.createElement('div');
+  reviewHeader.classList.add("review-header");
+
   const name = document.createElement('p');
   name.innerHTML = review.name;
-  li.appendChild(name);
+  name.classList.add("review-name");
+  reviewHeader.appendChild(name);
 
   const date = document.createElement('p');
   date.innerHTML = review.date;
